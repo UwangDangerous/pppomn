@@ -1,0 +1,76 @@
+body{
+    font-size: 14px;
+}
+
+#login-form-kiri img{
+    position : fixed ;
+    height: 100%;
+    
+}
+
+#text-login {
+    position: relative;
+    color : white ;
+    text-shadow: 3px 3px 5px rgba(0,0,0,0.7);
+    text-align: center;
+    padding-top: 450px;
+    /* padding-bottom: 150px; */
+    max-height: 100%;
+}
+
+#form-login {
+    position: fixed;
+    height: 100% !important;
+    background-color: white;
+    width: 30%;
+}
+
+#form-login img{
+    height: 130px;
+    margin-top: 70px;
+    margin : auto ;
+    /* text-align: center; */
+}
+
+
+.bottomright {
+    position: absolute;
+    bottom: 8px;
+    right: 16px;
+    font-size: 18px;
+  }
+
+
+@media (max-width: 767.98px) {
+    #login-form-kiri{
+        width:0 ;
+        height:0 ;
+    }
+
+    #text-login {
+        padding-top: 0;
+        height: 0;
+        width: 0;
+    }
+
+    #text-login h1, #text-login h6{
+        font-size: 0pt;
+    }
+
+    #login-form-kiri img{
+        width:0 ;
+        height:0 ;
+    }
+
+    #form-login {
+        position: relative;
+        width: 100%;
+    }
+
+    .bottomright{
+        position: relative;
+        bottom: 8px;
+        left: 16px;
+        margin-top: 60px;
+    }
+ }
