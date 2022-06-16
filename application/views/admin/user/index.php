@@ -30,6 +30,9 @@
             <tbody>
                 <?php $no = 1; ?>
                 <?php foreach ($user as $row) : ?>
+                    <?php if($row['id_user'] != 1) : ?>
+                        
+                    
                     <tr>
                         <td><?= $no++; ?></td>
                         <td><?= $row['nip'] ?></td>
@@ -83,6 +86,8 @@
                             </div>
                         </td>
                     </tr>
+
+                    <?php endif ; ?>
                 <?php endforeach ; ?>
             </tbody>
         </table>

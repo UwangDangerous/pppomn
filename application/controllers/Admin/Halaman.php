@@ -61,7 +61,7 @@
                 }
             }else{
                 $this->session->set_flashdata("login", "Silahkan Login Kembali");
-                redirect("login") ;
+                redirect(MYURL."login") ;
             }
         }
 
@@ -102,7 +102,7 @@
                 }
             }else{
                 $this->session->set_flashdata("login", "Silahkan Login Kembali");
-                redirect("login") ;
+                redirect(MYURL."login") ;
             }
         }
 
