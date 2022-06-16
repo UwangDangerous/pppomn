@@ -16,33 +16,5 @@
             } );
         </script>
 
-        <!-- <script src="<?//= base_url(); ?>assets/js/jquery-chained.min.js"></script>
-        
-
-
-        <script>
-            $("#provinsi").click(function(){
-                $("#kota").chained("#provinsi");
-            });
-        </script> -->
-
-        <!-- <script>
-            tinymce.init({
-                selector: '#timy' ,
-                plugins: "lists,charmap,preview ",
-                toolbar: 'numlist bullist bold italic underline superscript subscript align charmap preview'
-            });
-        </script> -->
-
-        <!-- <script src="<?//= base_url(); ?>assets/jsDelivr/jsDelivr_select.js"></script>
-        <script>
-            $(document).ready(function () {
-                $("#flexibel").select2({
-                    theme: 'bootstrap4',
-                    placeholder: "--Pilih--"
-                });
-            });
-        </script> -->
-
     </body>
 </html>
