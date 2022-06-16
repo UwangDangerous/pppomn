@@ -4,9 +4,10 @@
 
         public function cekLogin($name, $pass)
         {
-            $j_son = file_get_contents('https://sima.pom.go.id/index.php?/api/pegawai/index?kunci='.$name.'&kunci_pass='.$pass.'') ; 
+            // phpinfo() ;
+            $j_son = file_get_contents('https://sima.pom.go.id/index.php/api/pegawai/loginCovid/'.$name.'/'.$pass.'') ; 
             $data = json_decode($j_son, true) ;
-
+            // print_r($data) ;die;
             // login dengan sima
             if($data['status'] == 'success') {
                 $user = $data['data_user'] ;
