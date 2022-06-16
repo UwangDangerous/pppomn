@@ -81,6 +81,15 @@
                 redirect("$redirect") ;  
             }
         }
+
+        public function loginHistory($id)
+        {
+            $this->db->insert('_user_login', ['id_user' => $id, 'tgl_login' => date("Y-m-d G:i:s") ]) ;
+        }
+        public function logUserHistory($id, $keterangan)
+        {
+            $this->db->insert('_user_log', ['id_user' => $id, 'tgl_log' => date("Y-m-d G:i:s") , 'keterangan_log' => $keterangan]) ;
+        }
     }
 
 ?>

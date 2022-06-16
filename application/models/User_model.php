@@ -36,6 +36,7 @@
             
             if($this->db->insert('_user', $query)) {
                 $pesan = ['pesan' => 'Data Berhasil Disimpan', 'warna' => 'success'] ;
+                $this->Utility_model->logUserHistory($this->session->userdata('idKey'), $this->session->userdata('nameKey').' Telah Menambah Data User') ;
             }else{
                 $pesan = ['pesan' => 'Data Gagal Disimpan', 'warna' => 'danger'] ;
             }
@@ -64,15 +65,17 @@
                 'email' => $this->input->post('email'), 
                 'telp' => $this->input->post('telp'), 
                 'id_satker' => $this->input->post('id_satker'), 
-                'foto' => $upload
+                'foto' => $upload,
+                'username' => $this->input->post('nip')
             ] ;
             
             $this->db->where('id_user', $id) ;
             $this->db->set($query) ;
             if($this->db->update('_user')) {
-                $pesan = ['pesan' => 'Data Berhasil Disimpan', 'warna' => 'success'] ;
+                $pesan = ['pesan' => 'Data Berhasil Diubah', 'warna' => 'success'] ;
+                $this->Utility_model->logUserHistory($this->session->userdata('idKey'), $this->session->userdata('nameKey').' Telah Mengubah Data User') ;
             }else{
-                $pesan = ['pesan' => 'Data Gagal Disimpan', 'warna' => 'danger'] ;
+                $pesan = ['pesan' => 'Data Gagal Diubah', 'warna' => 'danger'] ;
             }
 
             $this->session->set_flashdata($pesan) ;
@@ -84,6 +87,7 @@
             $this->db->set('status', $aksi) ;
             if($this->db->update('_user')) {
                 $pesan = ['pesan' => 'Status Berhasil Diubah', 'warna' => 'success'] ;
+                $this->Utility_model->logUserHistory($this->session->userdata('idKey'), $this->session->userdata('nameKey').' Telah Mengubah Status Keaktifan User') ;
             }else{
                 $pesan = ['pesan' => 'Status Gagal Diubah', 'warna' => 'danger'] ;
             }
@@ -101,6 +105,7 @@
             $this->db->where('id_user', $id) ;
             if($this->db->delete('_user')) {
                 $pesan = ['pesan' => 'Data Berhasil Dihapus', 'warna' => 'success'] ;
+                $this->Utility_model->logUserHistory($this->session->userdata('idKey'), $this->session->userdata('nameKey').' Telah Menghapus Data User') ;
             }else{
                 $pesan = ['pesan' => 'Data Gagal Dihapus', 'warna' => 'danger'] ;
             }

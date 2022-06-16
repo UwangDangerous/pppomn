@@ -6,6 +6,8 @@
             parent::__construct() ;
             $this->load->library('form_validation');
             $this->load->model('Auth_model');
+            $this->load->model('Utility_model');
+            date_default_timezone_set('Asia/Jakarta');
         }
 
         public function index()
