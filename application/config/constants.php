@@ -2,6 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 define("MYWEB", "PPPOMN");
 define("MYURL", "http://localhost/pppomn/");
+define("MYPATH", "./");
 define("SEO", "PPPOMN, Pusat Pengembangan Pengujian Obat dan Makanan Nasional, Ridwan Hafifudin, Rumah PPPOMN") ;
 
 /*

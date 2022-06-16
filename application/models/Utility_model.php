@@ -42,13 +42,13 @@
             }
         }
 
-        public function uploadFile($namaBerkas, $path, $type, $redirect, $sess)
+        public function upload($namaBerkas, $path, $type, $redirect, $sess)
         {
            
             if( $_FILES[$namaBerkas]['name'] ) {
                 $filename = explode("." , $_FILES[$namaBerkas]['name']) ;
                 $ekstensi = strtolower(end($filename)) ;
-                $config['upload_path'] = './'.$path; //assets/file-upload/surat 
+                $config['upload_path'] = MYPATH.$path; //assets/file-upload/surat 
                 $config['allowed_types'] = "$type"; //'pdf|jpg|png|jpeg'
                 $config['file_size'] = '1028'; //kb
                 $hashDate = substr(md5(date('Y-m-d H:i:s')),1,15) ;
