@@ -1,6 +1,6 @@
     <!-- Nav Item - Charts -->
     <li class="nav-item">
-        <a class="nav-link" href="<?= MYURL.'ruangan' ; ?> ">
+        <a class="nav-link" href="<?= MYURL.'uruangan' ; ?> ">
             <i class="fas fa-home"></i>
             <span>Ruangan PPPOMN</span>
         </a>
@@ -63,7 +63,7 @@
 
         <?php if($hal[1] == true) : ?>
             <li class="nav-item">
-                <a class="nav-link" href="<?= MYURL ;?>ruangan/ruangan">
+                <a class="nav-link" href="<?= MYURL ;?>admRuangan/ruangan">
                     <i class="fas fa-home"></i>
                     <span>Ruangan PPPOMN</span>
                 </a>

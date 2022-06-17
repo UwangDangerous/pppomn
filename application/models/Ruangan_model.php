@@ -14,7 +14,7 @@
         public function getDataRuanganForStatus($id)
         {
             $this->db->where('id_ruangan', $id) ;
-            $this->db->where('mulai_booking', date("Y-m-d")) ;
+            $this->db->where('tgl_booking', date("Y-m-d")) ;
             return $this->db->get('ruangan_booking')->num_rows() ;
         }
 
@@ -33,7 +33,7 @@
             }
 
             $this->session->set_flashdata($pesan) ;
-            redirect(MYURL.'ruangan/ruangan') ;
+            redirect(MYURL.'admRuangan/ruangan') ;
         }
 
         public function editRuangan($id)
@@ -52,7 +52,7 @@
             }
 
             $this->session->set_flashdata($pesan) ;
-            redirect(MYURL.'ruangan/ruangan') ;
+            redirect(MYURL.'admRuangan/ruangan') ;
         }
 
         public function deleteRuangan($id)
@@ -66,7 +66,7 @@
             }
 
             $this->session->set_flashdata($pesan) ;
-            redirect(MYURL.'ruangan/ruangan') ;
+            redirect(MYURL.'admRuangan/ruangan') ;
         }
 
 
@@ -78,8 +78,37 @@
         public function getDataBooking($id)
         {
             $this->db->join('_user', '_user.id_user = ruangan_booking.id_user', 'left') ;
-            $this->db->order_by('mulai_booking', 'desc') ;
+            $this->db->join('_satker', '_user.id_satker = _satker.id_satker', 'left') ;
+            $this->db->order_by('tgl_booking', 'desc') ;
             return $this->db->get_where('ruangan_booking', ['id_ruangan', $id])->result_array() ; 
+        }
+
+        public function addBooking($id) 
+        {
+            $query = [
+                'id_ruangan' => $id ,
+                'id_user' => $this->session->userdata('idKey') ,
+                'tgl_booking' => $this->input->post('tgl_booking'),
+                'jam_booking' => $this->input->post('jam_booking'),
+                'lama_booking' => $this->input->post('lama_booking'),
+                'keterangan' => $this->input->post('keterangan')
+            ] ;
+
+            if($this->db->insert('ruangan_booking', $query)) 
+            {
+                $pesan = [
+                    'pesan' => 'Data Berhasil Disimpan' ,
+                    'warna' => 'success'
+                ];
+            }else{
+                $pesan = [
+                    'pesan' => 'Data Gagal Disimpan' ,
+                    'warna' => 'danger'
+                ];
+            }
+
+            $this->session->set_flashdata($pesan) ;
+            redirect(MYURL."admRuangan/ruangan/booking/$id") ;
         }
 
     }
