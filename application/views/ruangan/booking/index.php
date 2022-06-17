@@ -14,24 +14,34 @@
     <?php  endif ; ?>
     
     <div class="table-responsive">
-        <table class="table table-sm table-bordered table-striped text-center" id="tabel">
+        <table class="table table-sm table-bordered text-center" id="tabel">
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>Ruangan</th>
-                    <th>Lokasi</th>
-                    <th>Status</th>
+                    <th>Peminjam</th>
+                    <th>Poksi / Balai / TU</th>
+                    <th>Mulai</th>
+                    <th>Selesai</th>
+                    <th>Jam</th>
+                    <th>Keterangan</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
                 <?php $no = 1; ?>
                 <?php foreach ($ruangan as $row) : ?>
-                    <tr>
-                        <td><?= $no++; ?></td>
-                        <td><?= $row['nama_ruangan'] ?></td>
-                        <td><?= $row['lokasi'] ?></td>
-                        <td></td>
+                    <?php if($row['mulai_booking'] == date("Y-m-d")) : ?>
+                        <tr class='alert-success'>
+                    <?php else : ?>
+                        <tr>
+                    <?php endif ; ?>
+                        <td><?= $no++; ?> </td>
+                        <td><?= $row['nama_peminjam'] ?></td>
+                        <td><?= $row['poksi'] ?></td>
+                        <td><?= $this->Utility_model->formatTanggal( $row['mulai_booking'] ) ?></td>
+                        <td><?= $this->Utility_model->formatTanggal( $row['selesai_booking'] ) ?></td>
+                        <td><?= $row['jam_booking'] ?></td>
+                        <td><?= $row['keterangan']; ?></td>
                         <td>
                             <a href="<?= MYURL; ?>ruangan/ruangan/booking/<?= $row['id_ruangan']; ?>" data-toggle='tooltip' title='Booking Ruangan' class="badge badge-primary"><i class="fas fa-file-signature"></i></a>
                             <a href="<?= MYURL; ?>ruangan/ruangan/ubah/<?= $row['id_ruangan']; ?>" data-toggle='tooltip' title='Ubah Ruangan' class="badge badge-success"><i class="fa fa-edit"></i></a>

@@ -11,6 +11,13 @@
             return $this->db->get('ruangan_daftar')->row_array() ;
         }
 
+        public function getDataRuanganForStatus($id)
+        {
+            $this->db->where('id_ruangan', $id) ;
+            $this->db->where('mulai_booking', date("Y-m-d")) ;
+            return $this->db->get('ruangan_booking')->num_rows() ;
+        }
+
         public function addRuangan()
         {
             $query = [
@@ -70,6 +77,8 @@
 
         public function getDataBooking($id)
         {
+            $this->db->join('_user', '_user.id_user = ruangan_booking.id_user', 'left') ;
+            $this->db->order_by('mulai_booking', 'desc') ;
             return $this->db->get_where('ruangan_booking', ['id_ruangan', $id])->result_array() ; 
         }
 

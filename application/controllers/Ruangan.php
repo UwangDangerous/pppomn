@@ -21,7 +21,7 @@
                 
                 $this->load->view('temp/header',$data) ;
                 $this->load->view('temp/dsbHeader') ;
-                $this->load->view('ruangan/ruangan/index') ;
+                $this->load->view('ruangan/index') ;
                 $this->load->view('temp/dsbFooter') ;
                 $this->load->view('temp/footer') ;
             }else{
@@ -48,7 +48,7 @@
                 
                     $this->load->view('temp/header',$data) ;
                     $this->load->view('temp/dsbHeader') ;
-                    $this->load->view('ruangan/ruangan/tambah') ;
+                    $this->load->view('ruangan/tambah') ;
                     $this->load->view('temp/dsbFooter') ;
                     $this->load->view('temp/footer') ;
     
@@ -83,7 +83,7 @@
                 
                     $this->load->view('temp/header',$data) ;
                     $this->load->view('temp/dsbHeader') ;
-                    $this->load->view('ruangan/ruangan/ubah') ;
+                    $this->load->view('ruangan/ubah') ;
                     $this->load->view('temp/dsbFooter') ;
                     $this->load->view('temp/footer') ;
     

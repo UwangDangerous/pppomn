@@ -1,19 +1,22 @@
     <!-- Nav Item - Charts -->
     <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Charts</span></a>
+        <a class="nav-link" href="<?= MYURL.'ruangan' ; ?> ">
+            <i class="fas fa-home"></i>
+            <span>Ruangan PPPOMN</span>
         </a>
     </li>
     
-    <?php 
-    
-    ?>
+    <!-- Sidebar Toggler (Sidebar) -->
+    <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    </div>
 
     <?php if($this->session->userdata('idKey') == 1) : ?> <!-- akun admin -->
         <?php $hal = [true, true] ?> 
         <!-- administrator, ruangan umum -->
     <?php else : ?>
+
+        <?php $hal = [false, false] ?>   
 
         <?php $this->db->select('id_halaman'); ?>
         <?php $level = $this->db->get('_halaman')->result_array() ;  ?>
@@ -24,13 +27,14 @@
                 $this->db->select('id_halaman') ;
                 $akses = $this->db->get('_admin_halaman')->row_array(); 
             ?>
-
             <?php if($akses) : ?>
 
                 <?php if($akses['id_halaman'] == 1) : ?>
-                    <?php $hal = [true, false] ?>
-                <?php else : ?>
-                    <?php $hal = [false, true] ?>
+                    <?php $hal[0] = true ; ?>
+                <?php endif ; ?>
+                
+                <?php if($akses['id_halaman'] == 2) : ?>
+                    <?php $hal[1] = true ; ?>
                 <?php endif ; ?>
 
             <?php endif ; ?>
@@ -65,9 +69,3 @@
                 </a>
             </li>
         <?php endif ; ?>
-
-
-    <!-- Sidebar Toggler (Sidebar) -->
-    <div class="text-center d-none d-md-inline">
-        <button class="rounded-circle border-0" id="sidebarToggle"></button>
-    </div>

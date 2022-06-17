@@ -31,7 +31,13 @@
                         <td><?= $no++; ?></td>
                         <td><?= $row['nama_ruangan'] ?></td>
                         <td><?= $row['lokasi'] ?></td>
-                        <td></td>
+                        <td>
+                            <?php if($this->Ruangan_model->getDataRuanganForStatus($row['id_ruangan']) > 0) : ?>
+                                <i class="text-warning">Sedang Digunakan</i>
+                            <?php else : ?>
+                                <i class="text-success">Tersedia</i>
+                            <?php endif ; ?>
+                        </td>
                         <td>
                             <a href="<?= MYURL; ?>ruangan/ruangan/booking/<?= $row['id_ruangan']; ?>" data-toggle='tooltip' title='Booking Ruangan' class="badge badge-primary"><i class="fas fa-file-signature"></i></a>
                             <a href="<?= MYURL; ?>ruangan/ruangan/ubah/<?= $row['id_ruangan']; ?>" data-toggle='tooltip' title='Ubah Ruangan' class="badge badge-success"><i class="fa fa-edit"></i></a>
