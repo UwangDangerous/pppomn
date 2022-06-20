@@ -1,6 +1,6 @@
     <!-- Nav Item - Charts -->
     <li class="nav-item">
-        <a class="nav-link" href="<?= MYURL.'uruangan' ; ?> ">
+        <a class="nav-link" href="<?= MYURL.'ruangan' ; ?> ">
             <i class="fas fa-home"></i>
             <span>Ruangan PPPOMN</span>
         </a>
@@ -42,7 +42,6 @@
         <?php endforeach ; ?>
         
     <?php endif ; ?>
-
 
         <?php if($hal[0] == true) : ?>
             <li class="nav-item">

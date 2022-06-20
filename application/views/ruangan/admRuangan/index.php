@@ -20,7 +20,6 @@
                     <th>No</th>
                     <th>Ruangan</th>
                     <th>Lokasi</th>
-                    <th>Status</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -32,16 +31,9 @@
                         <td><?= $row['nama_ruangan'] ?></td>
                         <td><?= $row['lokasi'] ?></td>
                         <td>
-                            <?php if($this->Ruangan_model->getDataRuanganForStatus($row['id_ruangan']) > 0) : ?>
-                                <i class="text-warning">Sedang Digunakan</i>
-                            <?php else : ?>
-                                <i class="text-success">Tersedia</i>
-                            <?php endif ; ?>
-                        </td>
-                        <td>
                             <a href="<?= MYURL; ?>admRuangan/ruangan/booking/<?= $row['id_ruangan']; ?>" data-toggle='tooltip' title='Booking Ruangan' class="badge badge-primary"><i class="fas fa-file-signature"></i></a>
                             <a href="<?= MYURL; ?>admRuangan/ruangan/ubah/<?= $row['id_ruangan']; ?>" data-toggle='tooltip' title='Ubah Ruangan' class="badge badge-success"><i class="fa fa-edit"></i></a>
-                            <a href="<?= MYURL; ?>admRuangan/ruangan/hapus/<?= $row['id_ruangan']; ?>" data-toggle='tooltip' title='Hapus Ruangan' class="badge badge-danger" onclick="return confirm('Hapus Data ?')"><i class="fa fa-trash"></i></a>
+                            <a href="<?= MYURL; ?>admRuangan/ruangan/hapus/<?= $row['id_ruangan']; ?>" data-toggle='tooltip' title='Hapus Ruangan' class="badge badge-danger" onclick="return confirm('Menghapus Akan Menghilangkan Seluruh Data <?= $row['nama_ruangan']; ?>, Anda Yakin? ?')"><i class="fa fa-trash"></i></a>
                         </td>
                     </tr>
                 <?php endforeach ; ?>

@@ -6,14 +6,19 @@
                 <input type="date" name="tgl_booking" id="tgl_booking" class='form-control mb-3' value='<?= set_value('tgl_booking') ;?>' autofocus autocomplete="off">
                 <small id="usernameHelp" class="form-text text-danger"><?= form_error('tgl_booking'); ?></small>
             </div>
-            <div class="col-md-4">
-                <label for="jam_booking">Jam Booking</label> <i class="text-danger">*</i>
+            <div class="col-md-3">
+                <label for="jam_booking">Mulai</label> <i class="text-danger">*</i>
                 <input type="time" name="jam_booking" id="jam_booking" class='form-control mb-3' value='<?= set_value('jam_booking') ;?>' autofocus autocomplete="off">
                 <small id="usernameHelp" class="form-text text-danger"><?= form_error('jam_booking'); ?></small>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
+                <label for="selesai_booking">Selesai</label> <i class="text-danger">*</i>
+                <input type="time" name="selesai_booking" id="selesai_booking" class='form-control mb-3' value='<?= set_value('selesai_booking') ;?>' autofocus autocomplete="off">
+                <small id="usernameHelp" class="form-text text-danger"><?= form_error('selesai_booking'); ?></small>
+            </div>
+            <div class="col-md-2">
                 <label for="lama_booking">Lama Penggunaan</label> <i class="text-danger">*</i>
-                <input type="number" name="lama_booking" id="lama_booking" class='form-control mb-3' value='<?= set_value('lama_booking') ;?>' autofocus autocomplete="off">
+                <input type="number" name="lama_booking" id="lama_booking" class='form-control mb-3' value='1' autofocus autocomplete="off">
                 <small id="usernameHelp" class="form-text text-danger"><?= form_error('lama_booking'); ?></small>
             </div>
             <div class="col-md-12">

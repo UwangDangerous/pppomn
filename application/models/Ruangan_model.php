@@ -14,8 +14,8 @@
         public function getDataRuanganForStatus($id)
         {
             $this->db->where('id_ruangan', $id) ;
-            $this->db->where('tgl_booking', date("Y-m-d")) ;
-            return $this->db->get('ruangan_booking')->num_rows() ;
+            $this->db->order_by('id_ruangan', 'asc') ;
+            return $this->db->get('ruangan_booking')->row_array() ;
         }
 
         public function addRuangan()
@@ -77,19 +77,21 @@
 
         public function getDataBooking($id)
         {
+            $this->db->where('id_ruangan', $id) ;
             $this->db->join('_user', '_user.id_user = ruangan_booking.id_user', 'left') ;
             $this->db->join('_satker', '_user.id_satker = _satker.id_satker', 'left') ;
-            $this->db->order_by('tgl_booking', 'desc') ;
-            return $this->db->get_where('ruangan_booking', ['id_ruangan', $id])->result_array() ; 
+            $this->db->order_by('id_booking', 'desc') ;
+            return $this->db->get('ruangan_booking')->result_array() ; 
         }
 
-        public function addBooking($id) 
+        public function addBooking($id, $user='false') 
         {
             $query = [
                 'id_ruangan' => $id ,
                 'id_user' => $this->session->userdata('idKey') ,
                 'tgl_booking' => $this->input->post('tgl_booking'),
                 'jam_booking' => $this->input->post('jam_booking'),
+                'selesai_booking' => $this->input->post('selesai_booking'),
                 'lama_booking' => $this->input->post('lama_booking'),
                 'keterangan' => $this->input->post('keterangan')
             ] ;
@@ -108,7 +110,11 @@
             }
 
             $this->session->set_flashdata($pesan) ;
-            redirect(MYURL."admRuangan/ruangan/booking/$id") ;
+            if($user == true){
+                redirect(MYURL."ruangan/booking/$id") ;
+            }else{
+                redirect(MYURL."admRuangan/ruangan/booking/$id") ;
+            }
         }
 
     }

@@ -42,6 +42,119 @@
             }
         }
 
+        public function hitungTanggalRapat($tanggal, $lama, $time_start, $time_finish)
+        {
+            date_default_timezone_set("Asia/Jakarta");
+            if($lama > 1){
+                $lama -- ;
+                $selesai = date("Y-m-d", strtotime("$lama day",  strtotime($tanggal) ) ) ; 
+            }else{
+                $selesai = $tanggal ;
+            }
+
+            $start = strtotime($tanggal) ;
+            $finish = strtotime($selesai) ;
+            $sekarang = strtotime(date('Y-m-d')) ;
+            $time_start = strtotime($time_start) ;
+            $time_finish = strtotime($time_finish) ;
+            $time_now = strtotime(date("G:i:s")) ;
+
+            if($sekarang >= $start) {
+                if($sekarang <= $finish ) {
+                    
+                    if($time_now >= $time_start){
+                        if($time_now <= $time_finish){
+                            $alert = 'danger' ;
+                            $ket = 'danger' ;
+                            $ket2 = 'Sedang Digunakan' ;
+                        }else{
+                            $alert = 'warning' ;
+                            $ket = 'warning' ;
+                            $ket2 = 'Sedang Digunakan Pada Jam Tertentu' ;
+                        }
+                    }else{
+                        $alert = 'warning' ;
+                        $ket = 'warning' ;
+                        $ket2 = 'Sedang Digunakan Pada Jam Tertentu' ;
+                    }
+
+                }else {
+                    $alert = '' ;
+                    $ket = 'success' ; 
+                    $ket2 = 'Ruangan Tersedia' ; 
+                }
+            }else{
+                $alert = '' ;
+                $ket = 'success' ;
+                $ket2 = 'Ruangan Tersedia' ; 
+            }
+
+            $data = [
+                'mulai' => $this->formatTanggal( $tanggal ),
+                'selesai' => $this->formatTanggal( $selesai ),
+                'ket' => $ket,
+                'ket2' => $ket2,
+                'alert' => $alert
+            ];
+            return $data ;
+
+        }
+
+        public function ruanganTersedia($tanggal, $lama, $time_start, $time_finish)
+        {
+            date_default_timezone_set("Asia/Jakarta");
+            if($lama > 1){
+                $lama -- ;
+                $selesai = date("Y-m-d", strtotime("$lama day",  strtotime($tanggal) ) ) ; 
+            }else{
+                $selesai = $tanggal ;
+            }
+
+            $start = strtotime($tanggal) ;
+            $finish = strtotime($selesai) ;
+            $sekarang = strtotime(date('Y-m-d')) ;
+            $time_start = strtotime($time_start) ;
+            $time_finish = strtotime($time_finish) ;
+            $time_now = strtotime(date("G:i:s")) ;
+
+            if($sekarang >= $start) {
+                if($sekarang <= $finish ) {
+                    
+                    if($time_now >= $time_start){
+                        if($time_now <= $time_finish){
+                            $alert = 'danger' ;
+                            $ket = 'danger' ;
+                            $ket2 = 'Sedang Digunakan' ;
+                        }else{
+                            $alert = 'warning' ;
+                            $ket = 'warning' ;
+                            $ket2 = 'Sedang Digunakan Pada Jam Tertentu' ;
+                        }
+                    }else{
+                        $alert = 'warning' ;
+                        $ket = 'warning' ;
+                        $ket2 = 'Sedang Digunakan Pada Jam Tertentu' ;
+                    }
+
+                }else {
+                    $alert = '' ;
+                    $ket = 'success' ; 
+                    $ket2 = 'Ruangan Tersedia' ; 
+                }
+            }else{
+                $alert = '' ;
+                $ket = 'success' ;
+                $ket2 = 'Ruangan Tersedia' ; 
+            }
+
+            $data = [
+                'ket' => $ket,
+                'ket2' => $ket2
+            ];
+            return $data ;
+
+        }
+
         public function upload($namaBerkas, $path, $type, $redirect, $sess)
         {
            

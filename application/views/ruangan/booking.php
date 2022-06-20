@@ -1,7 +1,7 @@
 <div class="card p-3">
     <div class="row mb-3">
         <div class="col">
-            <a href="<?= MYURL;?>admRuangan/ruangan/booking_tambah/<?= $id; ?>" data-toggle='toogle' title='Tambah Data' class="btn btn-primary">Tambah Data</a>
+            <a href="<?= MYURL;?>ruangan/booking_tambah/<?= $id; ?>" data-toggle='toogle' title='Tambah Data' class="btn btn-primary">Tambah Data</a>
         </div>
     </div>
     <?php  if($this->session->flashdata('pesan')) : ?>
@@ -42,11 +42,21 @@
                         <td><?= $row['selesai_booking']; ?></td>
                         <td><?= $row['keterangan']; ?></td>
                         <td>
-                            <a href="<?= MYURL; ?>admRuangan/ruangan/hapus_booking/<?= $row['id_booking']; ?>/<?= $row['id_ruangan']; ?>" data-toggle='tooltip' title='Hapus Ruangan' class="badge badge-danger" onclick="return confirm('Anda Yakin?')"><i class="fa fa-trash"></i></a>
+                            <?php if($row['id_user'] == $this->session->userdata('idKey')) : ?>
+                                <a href="<?= MYURL; ?>ruangan/hapus_booking/<?= $row['id_booking']; ?>/<?= $row['id_ruangan']; ?>" data-toggle='tooltip' title='Hapus Data Booking' class="badge badge-danger" onclick="return confirm('Hapus Data ?')"><i class="fa fa-trash"></i></a>
+                            <?php endif ; ?>
                         </td>
                     </tr>
                 <?php endforeach ; ?>
             </tbody>
         </table>
+        
+        <br>
+
+        <div>
+            <span class="alert-warning"> * Sedang Digunakan Pada Jam Tertentu</span> <br>
+            <span class="alert-danger">* Sedang Digunakan</span> 
+        </div>
+
     </div>
 </div>

@@ -177,6 +177,15 @@
                 redirect(MYURL."login") ;
             }
         }
+
+            public function hapus_booking($id, $ruangan)
+            {
+                $this->db->where('id_booking', $id) ;
+                $this->db->delete('ruangan_booking') ;
+                $this->session->set_flashdata(['pesan' => 'Data Berhasil Dihapus', 'warna' => 'success']) ;
+                $this->Utility_model->logUserHistory($this->session->userdata('idKey'), $this->session->userdata('nameKey').' Menghapus Booking Ruangan') ;
+                redirect(MYURL.'admRuangan/ruangan/booking/'.$ruangan) ;
+            }
     }
 
 ?>
