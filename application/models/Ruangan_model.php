@@ -102,6 +102,7 @@
                     'pesan' => 'Data Berhasil Disimpan' ,
                     'warna' => 'success'
                 ];
+                $this->Utility_model->logUserHistory($this->session->userdata('idKey'), $this->session->userdata('nameKey').' Booking Ruangan Untuk '.$this->input->post('keterangan')) ;
             }else{
                 $pesan = [
                     'pesan' => 'Data Gagal Disimpan' ,

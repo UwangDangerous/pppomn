@@ -77,7 +77,7 @@
                             <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                             Pengaturan
                         </a>
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="<?= MYURL ; ?>log">
                             <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                             Log Aktifitas
                         </a>

@@ -13,6 +13,7 @@
         <script>
             $(document).ready(function() {
                 $('#tabel').dataTable();
+                $('#tabel2').dataTable();
             } );
         </script>
 
